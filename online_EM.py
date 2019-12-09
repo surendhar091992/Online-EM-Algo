@@ -18,9 +18,9 @@ def online_EM(data, init, gamma, s_bar, theta_bar):
     s = 0
     iter = len(data)
     for i in range(iter):
-        print(f'gamma = {gamma[i]}, Y_new = {data[i]}')
+        # print(f'gamma = {gamma[i]}, Y_new = {data[i]}')
         s, theta = online_EM_iter(data[i], s, theta, gamma[i], s_bar, theta_bar)
-        print([s[j,1]/s[j,0] for j in range(s.shape[0])])
+        # print([s[j,1]/s[j,0] for j in range(s.shape[0])])
     return s, theta
 
 # online_em2 (Titterington)

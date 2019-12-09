@@ -57,7 +57,7 @@ def poisson_s_bar(Y, theta):
     # print(f'y in poisson_s_bar = {Y}')
     w_y_theta = np.array([theta[0, j] * theta[1, j] ** Y * np.exp(- theta[1, j]) for j in range(m)])
     w_y_theta /= np.sum(w_y_theta)
-    print(f'w_y_theta = {w_y_theta}')
+    # print(f'w_y_theta = {w_y_theta}')
     for j in range(m):
         s_bar[j, 0] = w_y_theta[j]
         s_bar[j, 1] = Y * w_y_theta[j]

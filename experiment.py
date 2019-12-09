@@ -10,7 +10,7 @@ import numpy as np
 Generating a problem instance
 """
 # Parameters
-n = 1000  # Size of the data set
+n = 10000  # Size of the data set
 m = 3 # Number of clusters
 max_l = 100 # Maximum possible value for parameter lambda of Poisson
 
