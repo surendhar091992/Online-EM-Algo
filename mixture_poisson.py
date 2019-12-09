@@ -63,6 +63,20 @@ def poisson_theta_bar(new_s):
         theta_bar[1, j] = new_s[j, 1] / new_s[j, 0]
     return theta_bar
 
+"""
+Poisson Mixture - Fonctions for Classical EM
+"""
+def poisson_theta_bar2(y,theta,gamma):
+    m= theta.shape[1]
+    theta_bar = np.zeros((2,m))
+    # E-step
+    w_y_theta = np.array([theta[0, j] * theta[1, j] ** y * np.exp(- theta[1, j]) for j in range(m)])
+    w_y_theta /= np.sum(w_y_theta)
+    # update for omega 
+    for j in range(m):
+        theta_bar[0,j] = theta[0,j] + gamma*(w_y_theta[j]-theta[0,j])
+        theta_bar[1,j] = theta[1,j] + gamma*w_y_theta[j]*(y-theta[1,j])/theta[0,j]
+    return theta_bar
 
 """
 Main - Testing sampling for constructing the data set
