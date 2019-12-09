@@ -18,12 +18,18 @@ def sample_from_discrete(dist):
     return i
 
 def poisson_random_param(m, max_l):
+    """
+    Generates random parameters for Poisson mixture. m is the number of clusters. Generetas m random Poisson parameters in ]0; max_l].
+    :param m: number of clusters
+    :param max_l: maximum value for Poisson parameter
+    :return: vector (m, ), vector (m, )
+    """
     l = max_l * np.random.rand(m)
     p = np.random.rand(m)
     p /= np.sum(p)
     # print(f'lambda = {l}')
     # print(f'p = {p}')
-    return l, p
+    return np.array(p), np.array(l)
 
 def sample_poisson(n, l, p):
     W = []
@@ -44,15 +50,17 @@ Representation:
  * theta.shape = (2, m). First line are omega_j, second are lambda_j, for j in [1, m].
  * s.shape = (m, 2). For each line j in [1, m], we represente S_j(y, w) in page 7.
 """
-def poisson_s_bar(y, theta):
+def poisson_s_bar(Y, theta):
     m = theta.shape[1]
     s_bar = np.zeros((m, 2))
     # E-step
-    w_y_theta = np.array([theta[0, j] * theta[1, j] ** y * np.exp(- theta[1, j]) for j in range(m)])
+    # print(f'y in poisson_s_bar = {Y}')
+    w_y_theta = np.array([theta[0, j] * theta[1, j] ** Y * np.exp(- theta[1, j]) for j in range(m)])
     w_y_theta /= np.sum(w_y_theta)
+    print(f'w_y_theta = {w_y_theta}')
     for j in range(m):
         s_bar[j, 0] = w_y_theta[j]
-        s_bar[j, 1] = y * w_y_theta[j]
+        s_bar[j, 1] = Y * w_y_theta[j]
     return s_bar
 
 def poisson_theta_bar(new_s):
