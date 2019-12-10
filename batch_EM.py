@@ -37,8 +37,14 @@ def batch_EM_iter(Y,theta):
     new_theta = M_step(Y,w_y_theta)
     return new_theta
 
-def batch_EM(Y,theta_init,max_iter=500):
+def batch_EM(Y,theta_init,save_iter_theta = False,max_iter=500):
+    all_theta = theta_init.reshape((1,-1))
     for i in range(max_iter):
         theta = batch_EM_iter(Y,theta_init)
+        if save_iter_theta:
+            all_theta =np.concatenate([all_theta,theta.reshape((1,-1))],axis=0)
         theta_init =theta
-    return theta 
+    if save_iter_theta:
+        return theta,all_theta 
+    else:
+        return theta 

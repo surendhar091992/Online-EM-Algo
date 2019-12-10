@@ -13,14 +13,16 @@ Generating a problem instance
 # Parameters
 n = 5000  # Size of the data set
 m = 3 # Number of clusters
-max_l = 10 # Maximum possible value for parameter lambda of Poisson
+max_l = 50 # Maximum possible value for parameter lambda of Poisson
 
 # Random parameters
 l, p = poisson_random_param(m, max_l) # Ground truth
 
-# set lambda for different clusters 
-l = [1,10,100]
-p = [0.25,0.25,0.5]
+# Manuel parameters  
+#l = [100,10,1]
+#p = [0.25,0.25,0.5]
+
+# initial theta 
 theta_true = np.array([p, l])
 
 # Data set
@@ -32,7 +34,7 @@ Online EM algo
 # Parameters
 gamma_0 = 1
 alpha = 1.
-gamma = np.array([gamma_0 * np.power(n, -alpha) for l in range(1, n+1)])
+gamma = np.array([gamma_0 * np.power(l, -alpha) for l in range(1, n+1)])
 
 # Initialization
 p_init, l_init = poisson_random_param(m, max_l)
