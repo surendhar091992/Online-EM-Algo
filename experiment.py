@@ -4,23 +4,27 @@ Experiments - Online EM Algorithm with Mixture of Poisson
 
 from mixture_poisson import poisson_random_param, sample_poisson, poisson_s_bar, poisson_theta_bar
 from online_EM import online_EM,online_EM2
+from batch_EM import batch_EM
 import numpy as np
 
 """
 Generating a problem instance
 """
 # Parameters
-n = 10000  # Size of the data set
+n = 5000  # Size of the data set
 m = 3 # Number of clusters
-max_l = 100 # Maximum possible value for parameter lambda of Poisson
+max_l = 50 # Maximum possible value for parameter lambda of Poisson
 
-# # Random parameters
-# theta_true = poisson_random_param(m, max_l) # Ground truth
+# Random parameters
+l, p = poisson_random_param(m, max_l) # Ground truth
 
-# Choosen parameters
-p_true = np.ones(m) / m
-l_true = [1, 10, 100]
-theta_true = np.array([p_true, l_true])
+# Manuel parameters  
+#l = [100,10,1]
+#p = [0.25,0.25,0.5]
+
+# initial theta 
+theta_true = np.array([p, l])
+
 
 # Data set
 Y, W = sample_poisson(n, theta_true[1], theta_true[0])
@@ -47,8 +51,14 @@ print(f"Initial Theta:\n{theta_init}")
 # Online EM algo
 s, theta = online_EM(Y, theta_init, gamma, poisson_s_bar, poisson_theta_bar)
 theta2 = online_EM2(Y, theta_init, gamma)
+
+# Batch EM algo
+max_iteration =500
+theta3 = batch_EM(Y, theta_init,max_iter = max_iteration)
+
 # Output
 print("\n===============\nFinal results \n===============")
 print(f"Truth:\n{theta_true}")
 print(f"Online EM after {n} iterations:\n{theta}")
 print(f"Online EM2 after {n} iterations:\n{theta2}")
+print(f"Online EM3 after {max_iteration} iterations:\n{theta3}")

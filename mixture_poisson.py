@@ -72,7 +72,7 @@ def poisson_theta_bar(new_s):
     return theta_bar
 
 """
-Poisson Mixture - Fonctions for Classical EM
+Poisson Mixture - Fonctions for stochastic EM
 """
 def poisson_theta_bar2(y,theta,gamma):
     m= theta.shape[1]
