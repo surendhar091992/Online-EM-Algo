@@ -25,20 +25,27 @@ l, p = poisson_random_param(m, max_l) # Ground truth
 # initial theta 
 theta_true = np.array([p, l])
 
+
 # Data set
-Y, W = sample_poisson(n, l, p)
+Y, W = sample_poisson(n, theta_true[1], theta_true[0])
 
 """
 Online EM algo
 """
 # Parameters
 gamma_0 = 1
-alpha = 1.
+alpha = 0.6
 gamma = np.array([gamma_0 * np.power(l, -alpha) for l in range(1, n+1)])
 
-# Initialization
-p_init, l_init = poisson_random_param(m, max_l)
-theta_init = np.array([p_init, l_init])
+# Random initialization
+l, p = poisson_random_param(m, max_l)
+theta_init = np.array([l, p])
+
+# # Choosen initialization
+# p_init = [0.2, 0.35, 0.45]
+# l_init = [40, 20, 70]
+# theta_init = np.array([p_init, l_init])
+
 print(f"Initial Theta:\n{theta_init}")
 
 # Online EM algo

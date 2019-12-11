@@ -2,6 +2,7 @@
 Implementation of Online EM Algorithm
 Leon Zheng
 """
+
 import numpy as np
 
 def online_EM_iter(new_data, s, theta, new_gamma, s_bar, theta_bar):
@@ -15,9 +16,9 @@ def online_EM_iter(new_data, s, theta, new_gamma, s_bar, theta_bar):
 def online_EM(data, init, gamma, s_bar, theta_bar, save_iter_theta=False):
     all_theta =init.reshape((1,-1))
     s = 0
-    theta = init
     iter = len(data)
     for i in range(iter):
+        # print(f'gamma = {gamma[i]}, Y_new = {data[i]}')
         s, theta = online_EM_iter(data[i], s, theta, gamma[i], s_bar, theta_bar)
         if save_iter_theta:
             all_theta =np.concatenate([all_theta,theta.reshape((1,-1))],axis=0)
