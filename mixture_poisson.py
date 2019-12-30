@@ -6,6 +6,17 @@ Leon Zheng
 import numpy as np
 
 
+
+def change_order(theta):
+    m = theta.shape[1]
+    order = np.argsort(theta[1,:])
+    new_theta = np.zeros(theta.shape)
+    for i in range(m):
+        new_theta[0,i] = theta[0,order[i]]
+        new_theta[1,i] = theta[1,order[i]]
+    return new_theta
+
+
 """
 Constructing a data set, mixture of Poisson
 """
