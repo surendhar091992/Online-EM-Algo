@@ -14,10 +14,10 @@ import seaborn as sns
 
 
 # PARAMETERS
-num_exp = 500 #
+num_exp = 100 #
 max_iteration_1 = 3 # For batch EM
 max_iteration_2 = 5 # For batch EM
-n = 10000  # Size of the data set
+n = 5000  # Size of the data set
 m = 3
 max_l = 100
 l = [10, 40, 80]
@@ -66,8 +66,8 @@ for i in range(num_exp):
     all_theta_06.append(theta.reshape(1,-1)[0])
 print('Done!\n')
 
-# Batch EM 1
-gamma_0 = 1
+# Batch EM 1, alpha = 1
+gamma_0 = 2
 alpha = 1.
 gamma = np.array([gamma_0 * np.power(l, -alpha) for l in range(1, n+1)])
 all_theta_batch_1 =[]
@@ -81,7 +81,7 @@ for i in range(num_exp):
     all_theta_batch_1.append(theta.reshape(1,-1)[0])
 print('Done!\n')
 
-# Batch EM 2
+# Batch EM 2, alpha = 0.6
 gamma_0 = 1
 alpha = 1.
 gamma = np.array([gamma_0 * np.power(l, -alpha) for l in range(1, n+1)])
@@ -118,4 +118,4 @@ for i in range(2):
         sns.boxplot(x='Methods', y=param, data=df, ax = axes[i, j])
         axes[i, j].plot([-0.5,3.5],[true_params[count],true_params[count]],'--')
         count += 1
-plt.savefig('methods.png')
+plt.savefig(f'methods_N_{n}.png')
