@@ -6,14 +6,8 @@ Run the following Python programs:
 * `cv_rate_experience.py` for comparing convergence trajectories between OL1 and OL06.
 * `methods_experiments.py` for comparing online EM with several step size and batch EM.
 
-## ToDo List
-
-* Figure 4: plot the convergence of parameters using Online EM Algo.
-* Check the sensitivity of Online EM Algo on the initialization.
-
-## Remarks
-
-### Poisson Mixture experiment
-* To see convergence, need to choose very different lambdas for the true parameters, like [1, 10, 100].
-* The Online EM Algo seems to be sensitive to initalization. Sometimes it converges toward the truth, sometimes it doesn't. Check this
-
+## Structure
+* Jupyter notebook for testing: ``test.ipynb``
+* Basic experiments: ``experiments.py``
+* Methods for Online EM implementation for Poisson Mixture model: ``online_EM.py``, ``mixture_poisson.py``
+* Classical batch EM: ``batch_EM.py``
