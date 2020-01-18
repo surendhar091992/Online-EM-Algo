@@ -3,8 +3,8 @@ Convergence rate experiements
 Leon Zheng
 """
 
-from mixture_poisson import sample_poisson, poisson_s_bar, poisson_theta_bar
-from online_EM import multi_online_EM, polyak_ruppert_online_em
+from src.mixture_poisson import sample_poisson, poisson_s_bar, poisson_theta_bar
+from src.online_EM import multi_online_EM, polyak_ruppert_online_em
 import matplotlib.pyplot as plt
 import numpy as np
 

@@ -4,9 +4,9 @@ Leon Zheng
 """
 
 
-from mixture_poisson import sample_poisson, poisson_s_bar, poisson_theta_bar, poisson_random_param, change_order
-from online_EM import online_EM
-from batch_EM import batch_EM
+from src.mixture_poisson import sample_poisson, poisson_s_bar, poisson_theta_bar, poisson_random_param, change_order
+from src.online_EM import online_EM
+from src.batch_EM import batch_EM
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd

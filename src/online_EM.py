@@ -8,7 +8,7 @@ import numpy as np
 
 
 # online_em2 (Titterington)
-from mixture_poisson import poisson_theta_bar2
+from src.mixture_poisson import poisson_theta_bar2
 def online_EM2(data, init, gamma, save_iter_theta = False):
     all_theta =init.reshape((1,-1))
     theta = init

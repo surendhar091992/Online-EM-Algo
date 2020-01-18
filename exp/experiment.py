@@ -2,9 +2,9 @@
 Experiments - Online EM Algorithm with Mixture of Poisson
 """
 
-from mixture_poisson import poisson_random_param, sample_poisson, poisson_s_bar, poisson_theta_bar
-from online_EM import online_EM,online_EM2
-from batch_EM import batch_EM
+from src.mixture_poisson import poisson_random_param, sample_poisson, poisson_s_bar, poisson_theta_bar
+from src.online_EM import online_EM,online_EM2
+from src.batch_EM import batch_EM
 import numpy as np
 
 """
