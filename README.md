@@ -3,11 +3,14 @@ Implementation of "Online EM Algorithm for Latent Data Models" (Cappé O., Mouli
 
 ## Run experiments
 Run the following Python programs:
-* `cv_rate_experience.py` for comparing convergence trajectories between OL1 and OL06.
-* `methods_experiments.py` for comparing online EM with several step size and batch EM.
+* `exp/cv_rate_experience.py` for comparing convergence trajectories between OL1 and OL06.
+* `exp/methods_experiments.py` for comparing online EM with several step size and batch EM.
 
 ## Structure
 * Jupyter notebook for testing: ``test.ipynb``
-* Basic experiments: ``experiments.py``
-* Methods for Online EM implementation for Poisson Mixture model: ``online_EM.py``, ``mixture_poisson.py``
-* Classical batch EM: ``batch_EM.py``
+* Basic experiments are in ``exp/``
+* Methods for Online EM implementation for Poisson Mixture model: ``src/online_EM.py``, ``src/mixture_poisson.py``
+* Classical batch EM: ``src/batch_EM.py``
+
+## Slides
+Slides for this project work is available in this repository.
